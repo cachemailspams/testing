@@ -1,16 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="ba7dd6a8222edceddefa96db4fcc3987c71323a6"
-        content="ba7dd6a8222edceddefa96db4fcc3987c71323a6" />
+  <title>Video Ads Test</title>
 
-  <title>My Website</title>
+  <link
+    href="https://vjs.zencdn.net/8.23.3/video-js.css"
+    rel="stylesheet"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/videojs-contrib-ads/dist/videojs.ads.css"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/videojs-ima/dist/videojs.ima.css"
+  />
+
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .video-js {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
+
+    h1 {
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>My Website</h1>
+
+  <div class="container">
+    <h1>Video Advertisement Test</h1>
+
+    <video
+      id="my-video"
+      class="video-js vjs-default-skin"
+      controls
+      preload="auto"
+      playsinline
+    >
+      <source
+        src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+
+  <!-- Google IMA SDK -->
+  <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+
+  <!-- Video.js -->
+  <script src="https://vjs.zencdn.net/8.23.3/video.min.js"></script>
+
+  <!-- Video.js ads plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-ads/dist/videojs.ads.min.js"></script>
+
+  <!-- Video.js IMA plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/videojs-ima/dist/videojs.ima.min.js"></script>
+
+  <script>
+    const player = videojs('my-video');
+
+    player.ima({
+      adTagUrl:
+        'https://subtle-injury.com/dwm.FFz/d/GTNyvaZpGpUG/QeEmc9yuGZwUhlHkvPxTqce0/Nkz/Ik1gN/DMEWtJNlzlQ/3gM/jWUt0iNDSgZasVaIWS1CpOdADf0yxT'
+    });
+
+    player.ready(function () {
+      player.ima.initializeAdDisplayContainer();
+    });
+  </script>
+
 </body>
 </html>
